@@ -23,8 +23,8 @@
             <td><?php echo $dt->Correo; ?></td>
             <td><?php echo $dt->Telefono; ?></td>
             <td>
-                <button type="button" class="btn btn-primary">Editar</button>
-                <button type="button" class="btn btn-danger">Borrar</button>
+                <a href="<?php echo base_url('alumnos/obtenerAlumno/'.$dt->No_control_alumno) ?>" type="button" class="btn btn-primary">Editar</a>
+                <a href="<?php echo base_url('alumnos/eliminar/'.$dt->No_control_alumno) ?>" type="button" class="btn btn-danger">Borrar</a>
             </td>
         </tr>
     <?php }?>

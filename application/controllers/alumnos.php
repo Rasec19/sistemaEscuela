@@ -51,14 +51,44 @@ class Alumnos extends CI_Controller {
         try{
             $data = $this->Alumno->obtener();
             if($data){
-                // foreach ($data as $dt) {
-                //     print_r($dt->Nombre);
-                // }
                 $this->load->view('alumnos/obtenerAlumnos',compact("data"));
             } else{
-                throw new Exception("Ha ocudrriod un error");
+                throw new Exception("Ha ocudrriod un error.");
             }
         } catch(Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function eliminar(int $id)
+    {
+        try{
+            $data = $this->Alumno->eliminar($id);
+
+            if($data) {
+                $this->obtener();
+            } else{
+                throw new Exception("Ha ocurrido un error.");
+            }
+        } catch(Exception $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function obtenerAlumno(int $id)
+    {
+        try{
+            $data = $this->Alumno->obtenerAlumno($id);
+
+            if($data) {
+                foreach ($data as $dt) {
+                    print_r($dt);
+                }
+                $this->load->view('alumnos/altaAlumnos',compact("data"));
+            } else{
+                throw new Exception("Ha ocurrido un error.");
+            }
+        } catch(Exception $e){
             echo $e->getMessage();
         }
     }

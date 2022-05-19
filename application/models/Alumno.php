@@ -11,7 +11,7 @@
                 } else{
                     throw new Exception('Ha ocurrido un error en la base de datos');
                 }
-                
+
             } catch(Exception $e) {
                 echo $e->getMessage();
             }
@@ -35,12 +35,27 @@
         public function eliminar(int $id)
         {
             try{
-                $result = $this->db->query("DELETE FROM alumnos WHERE No_control_alumno = {$id}")->result();
+                $result = $this->db->query("DELETE FROM alumnos WHERE No_control_alumno = {$id}");
 
                 if($result) {
                     return true;
                 } else{
                     throw new Exception("Ha ocurrido un error en la base de datos la intentar eliminar.");
+                }
+            } catch(Exception $e){
+                echo $e->getMessage();
+            }
+        }
+
+        public function obtenerAlumno(int $id)
+        {
+            try{
+                $result = $this->db->query("SELECT * FROM alumnos WHERE No_control_alumno = {$id}")->result();
+
+                if($result) {
+                    return $result;
+                } else{
+                    throw new Exception("Ha ocurrido un error en la base de datos la intentar obtener los datos del alumno.");
                 }
             } catch(Exception $e){
                 echo $e->getMessage();
