@@ -53,4 +53,6 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['alumnos'] = 'alumnos';
+#RUTAS DE ALUMNOS
+$route['agregar-alumno'] = 'alumnos';
+$route['alumnos'] = 'alumnos/obtener';
