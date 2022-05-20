@@ -1,5 +1,5 @@
 <?php $this->load->view('partials/header'); ?>
-
+<?php $this->load->view('partials/navbar'); ?>
 <body>
 <table class="table table-hover text-center">
   <thead>

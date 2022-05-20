@@ -81,12 +81,42 @@ class Alumnos extends CI_Controller {
             $data = $this->Alumno->obtenerAlumno($id);
 
             if($data) {
-                foreach ($data as $dt) {
-                    print_r($dt);
-                }
-                $this->load->view('alumnos/altaAlumnos',compact("data"));
+                $this->load->view('alumnos/editarAlumno',compact("data"));
             } else{
                 throw new Exception("Ha ocurrido un error.");
+            }
+        } catch(Exception $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function editar()
+    {
+        try{
+            $idAlumno = $this->input->post('idAlumno');
+            $nombre = $this->input->post('nombre');
+            $apellidoP = $this->input->post('apellidoP');
+            $apellidoM = $this->input->post('apellidoM');
+            $correo = $this->input->post('correo');
+            $telefono = $this->input->post('telefono');
+
+            if(!empty($nombre) && !empty($apellidoP) && !empty($apellidoM) && !empty($correo) && !empty($telefono)){
+                $data = array(
+                    "No_control_alumno" => $idAlumno,
+                    "Nombre" =>$nombre,
+                    "Apellido_P" =>$apellidoP,
+                    "Apellido_M" =>$apellidoM,
+                    "Correo" =>$correo,
+                    "Telefono" =>$telefono
+                );
+        
+                $exito = $this->Alumno->editar($data);
+
+                if($exito){
+                    header('Location: '.base_url().'alumnos');
+                }
+            } else {
+                throw new Exception("Campo ingresado incorrectamente");
             }
         } catch(Exception $e){
             echo $e->getMessage();

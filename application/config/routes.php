@@ -56,3 +56,6 @@ $route['translate_uri_dashes'] = FALSE;
 #RUTAS DE ALUMNOS
 $route['agregar-alumno'] = 'alumnos';
 $route['alumnos'] = 'alumnos/obtener';
+#RUTAS DE MATERIAS
+$route['agregar-materia'] = 'materias';
+$route['materias'] = 'materias/obtener';

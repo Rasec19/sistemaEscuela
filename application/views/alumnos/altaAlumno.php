@@ -1,5 +1,5 @@
 <?php $this->load->view('partials/header'); ?>
-
+<?php $this->load->view('partials/navbar'); ?>
 <body>
     <div class="container">
         <h1>Alta de alumnos</h1>
